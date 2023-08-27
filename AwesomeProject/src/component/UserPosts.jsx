@@ -6,11 +6,11 @@ import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
-export const UserPost = ({ imgSrc, postName, numbOfComments, numbOfLikes, location, coords }) => {
+export const UserPost = ({ imgSrc, postName, numbOfComments, numbOfLikes, location, coords, postId, style }) => {
     const navigation = useNavigation();
 
     const onCommentsClick = () => {
-        navigation.navigate("Comments", { imgSrc });
+        navigation.navigate("Comments", { imgSrc, postId });
     };
 
     const onLocationClick = () => {
@@ -18,7 +18,7 @@ export const UserPost = ({ imgSrc, postName, numbOfComments, numbOfLikes, locati
     };
 
     return (
-        <View>
+        <View style={style}>
             <View>
                 <Image source={imgSrc} resizeMode="cover" style={styles.image} />
             </View>

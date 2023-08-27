@@ -5,18 +5,18 @@ import { MapPinIcon, MessageIcon } from "../../assets/svgIcons/icons";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export const Post = ({ imgSrc, postName, numbOfComments, location, coords }) => {
+export const Post = ({ imgSrc, postName, numbOfComments, location, coords, postId, style }) => {
     const navigation = useNavigation();
 
     const onCommentsClick = () => {
-        navigation.navigate("Comments", { imgSrc });
+        navigation.navigate("Comments", { imgSrc, postId });
     };
 
     const onLocationClick = () => {
         navigation.navigate("Maps", { coords });
     };
     return (
-        <View>
+        <View style={style}>
             <View>
                 <Image source={imgSrc} resizeMode="cover" style={styles.image} />
             </View>
@@ -40,6 +40,9 @@ export const Post = ({ imgSrc, postName, numbOfComments, location, coords }) => 
 };
 
 const styles = StyleSheet.create({
+    container: {
+        
+    },
     commonText: {
         fontSize: 16,
         lineHeight: 18.75,
